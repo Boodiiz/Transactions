@@ -15,12 +15,11 @@ export default function CustomerTable() {
         const fetchData = async () => {
             try {
                 //  local host عشان يشتغل محتاج اشغل السيرفر
-                const customersResponse = await fetch("http://localhost:3003/customers");
+                const customersResponse = await fetch("https://boodiiz.github.io/host_api/DataBase.json");
                 const customersData = await customersResponse.json();
-                const customersResponseTransaction = await fetch("http://localhost:3003/transactions");
-                const customersDataTransaction = await customersResponseTransaction.json();
-                setCustomers(customersData);
-                setTransactions(customersDataTransaction);
+                console.log(customersData);
+                setCustomers(customersData.customers);
+                setTransactions(customersData.transactions);
               
             } catch (error) {
                 console.error("Error fetching data:", error);
